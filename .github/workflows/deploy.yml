@@ -1,0 +1,35 @@
+name: Deploy to Yandex.Cloud S3
+on:
+  push:
+    branches:
+      - "**"
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 20.x ]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Set Env Vars
+        run: echo "VITE_APP_API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        uses: paulvstrashnov/yandex-s3-upload-action@main
+        with:
+          accessKeyId: ${{ secrets.ACCESS_KEY_ID }}
+          secretAccessKey: ${{ secrets.SECRET_ACCESS_KEY }}
+          bucket: ${{ secrets.BUCKET }}
+          localPath: "./build"
+          remotePath: "/"
