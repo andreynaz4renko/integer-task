@@ -1,5 +1,4 @@
 import { API_BASE_URL, API_HEADERS } from "@model/constants";
-import type { GeneratorDto } from "@model/types/generator-dto";
 
 export type TableApi = {
   baseUrl: string;

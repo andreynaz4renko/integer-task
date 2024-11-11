@@ -1,5 +1,4 @@
 import { o } from "sinuous";
-import { GeneratorDto } from "@model/types/generator-dto";
 import { TableApi, tableApi } from "@/model";
 
 export class AppController {

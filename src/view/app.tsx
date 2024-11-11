@@ -14,15 +14,19 @@ const App = () => {
           <div className={styles.app__error}>При загрузке данных возникла ошибка {appController.tableDataError()}</div>
         ) : (
           <Table
-            head={<Row children={[<Column children="ID" />, <Column children="Дата" />, <Column children="Имя" />]} />}
+            head={
+              <Row>
+                <Column>ID</Column>
+                <Column>Дата</Column>
+                <Column>Имя</Column>
+              </Row>
+            }
             body={map(appController.tableData, row => (
-              <Row
-                children={[
-                  <Cell children={row.id} />,
-                  <Cell children={parseDate(row.date)} />,
-                  <Cell children={row.profile.name} />,
-                ]}
-              />
+              <Row>
+                <Cell>{row.id}</Cell>
+                <Cell>{parseDate(row.date)}</Cell>
+                <Cell>{row.profile.name}</Cell>
+              </Row>
             ))}
           />
         )
