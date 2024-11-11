@@ -1,11 +1,10 @@
 import { o } from "sinuous";
-import { GeneratorDto } from "@model/types/generator-dto";
-import { tableApi, TableApi } from "@/model";
+import { TableApi, tableApi } from "@/model";
 
 export class AppController {
   tableDataError = o<string | undefined>(undefined);
   tableData = o<GeneratorDto>([]);
-  tableApi?: TableApi;
+  tableApi: TableApi;
 
   constructor(tableApi: TableApi) {
     this.tableApi = tableApi;
@@ -13,7 +12,7 @@ export class AppController {
 
   fetchItems() {
     this.tableApi
-      ?.fetchItemsApi()
+      .fetchItems()
       .then(data => {
         this.tableData(data);
       })

@@ -1,1 +1,2 @@
-export { default as tableApi, TableApi } from "./table-api";
+export { default as tableApi } from "./table-api";
+export type { TableApi } from "./table-api"

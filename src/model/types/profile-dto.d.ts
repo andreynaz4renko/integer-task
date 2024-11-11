@@ -1,4 +1,4 @@
-export type ProfileDto = {
+declare type ProfileDto = {
   name: string;
   email: string;
 };

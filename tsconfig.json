@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
+    "jsxFactory": "h",
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": [
